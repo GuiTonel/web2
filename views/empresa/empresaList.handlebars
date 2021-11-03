@@ -1,0 +1,16 @@
+    <table border="1px">
+        <tr>
+            <td> Nome </td>
+            <td> Ingredientes</td>
+            <td> Modo de preparo</td>
+        </tr>
+        {{#each empresas}}
+        <tr>
+            <td>{{nome}}</td>
+            <td>{{tipo}}</td>
+            <td>{{qtdFuncionarios}}</td>
+            <td>{{proprietario}}</td>
+            <td>{{endereco}}</td>
+        </tr>
+        {{/each}}
+    </table>
