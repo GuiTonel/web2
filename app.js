@@ -12,10 +12,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(routes);
-mongoose.connect(db_mongoose.connection,{useUnifiedTopology:true,useNewUrlParser:true, useCreateIndex:true}).then(()=>{
+mongoose.connect(db_mongoose.connection,{useUnifiedTopology:true,useNewUrlParser:true}).then(()=>{
     console.log('Conectado com o BD');
-}).catch(()=>{
-        console.log('Erro na conexão com o BD');
+}).catch((err)=>{
+        console.log(err);
 });
 
 app.use(

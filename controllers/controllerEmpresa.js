@@ -6,18 +6,10 @@ module.exports = {
         res.render('empresa/empresaCreate');
     },
     async postCreate(req, res) {
-        const {nome, tipo, qtdFuncionarios, idProprietario, endereco} = req.body;
-        proprietario = db.Usuario.findAll(
-            { where: {id: idProprietario}}, 
-            ( user, err ) => {
-                if (err) throw err;
-
-                return user.login;
-            })
-        
+        const {nome, tipo, qtdFuncionarios, proprietario, endereco} = req.body;
         const empresa = new Empresa({nome, tipo, qtdFuncionarios, proprietario, endereco});
         await empresa.save();
-        res.redirect('/home');
+        res.redirect('empresaList');
     },
     async getList(req, res) {
         Empresa.find().then((empresas) => {
