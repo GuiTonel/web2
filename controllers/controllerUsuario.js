@@ -1,13 +1,14 @@
-const Sequelize = require('sequelize');
 const db = require('../config/db_sequelize');
-//const Usuario = require('../models/models_postgres/Usuario');
-const path = require('path');
 
 /*db.sequelize.sync({force: true}).then(() => {
     console.log('{ force: true }');
 });*/
 
 module.exports = {
+    async getLogout(req,res){
+        req.session.destroy();
+        res.redirect('/');
+    },    
     async getLogin(req,res){
         res.render('usuario/login',{layout: 'noMenu.handlebars'});
     },
@@ -15,6 +16,7 @@ module.exports = {
         db.Usuario.findAll({ where: {login: req.body.login, senha: req.body.senha}}
         ). then (usuarios => {
             if (usuarios.length > 0){
+                req.session.login = req.body.login;
                 res.render('home');
             }
             else
