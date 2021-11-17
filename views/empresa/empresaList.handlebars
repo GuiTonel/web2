@@ -5,6 +5,8 @@
             <td> Quantidade de Funcionarios</td>
             <td> Nome do Proprietario</td>
             <td> Endereço</td>
+            <td> Editar</td>
+            <td> Deletar</td>
         </tr>
         {{#each empresas}}
         <tr>
@@ -13,6 +15,8 @@
             <td>{{qtdFuncionarios}}</td>
             <td>{{proprietario}}</td>
             <td>{{endereco}}</td>
+            <td><a href="empresaEdit/{{_id}}"> Editar </a></td>
+            <td><a href="empresaDelete/{{_id}}"> Deletar </a></td>
         </tr>
         {{/each}}
     </table>

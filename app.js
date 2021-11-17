@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const handlebars = require('express-handlebars');
 const express = require('express');
+const middlewares = require('./middlewares/middlewares')
 const app = express();
 
 app.engine('handlebars', handlebars ({defaultLayout:'main'}));
@@ -13,6 +14,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(session({secret: 'segredosecreto', saveUninitialized:true, cookie:{maxAge: 30*60*1000}}))
+
+app.use(middlewares.logRegister, middlewares.sessionControl)
 
 app.use(routes);
 mongoose.connect(db_mongoose.connection,{useUnifiedTopology:true,useNewUrlParser:true}).then(()=>{

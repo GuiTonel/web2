@@ -1,0 +1,15 @@
+<form action="/empresaEdit" method="POST">
+    <input type="hidden" name="id" value="{{empresas._id}}">
+    <p>Nome:</p> 
+    <input type="text" name="nome" value="{{empresas.nome}}">
+    <p>Tipo:</p> 
+    <input type="text" name="tipo" value="{{empresas.tipo}}">
+    <p>Quantidade de Funcionarios:</p> 
+    <input type="text" name="qtdFuncionarios" value="{{empresas.qtdFuncionarios}}">
+    <p>Nome do Proprietario:</p> 
+    <input type="text" name="proprietario" value="{{empresas.proprietario}}">
+    <p>Endereço:</p> 
+    <input type="text" name="endereco" value="{{empresas.endereco}}">
+    <br><br>
+    <input type="submit" value="Editar">
+</form>
